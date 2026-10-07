@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spam News Detection</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Spam News Detection</h1>
+            <p>Verify the authenticity of a news article before sharing.</p>
+        </header>
+
+        <main>
+            <div class="input-section">
+                <label for="newsInput">Paste the news article text below:</label>
+                <textarea id="newsInput" rows="10" placeholder="Enter article text here..."></textarea>
+                <button id="analyzeBtn" class="btn">Analyze Article</button>
+            </div>
+
+            <div class="output-section">
+                <div id="loading" class="hidden">
+                    <div class="spinner"></div>
+                    <p>Analyzing...</p>
+                </div>
+                <div id="result" class="hidden">
+                    <h2>Analysis Result</h2>
+                    <div id="prediction" class="prediction-box">
+                        <!-- Result will be inserted here -->
+                    </div>
+                    <p id="confidence" class="confidence-text"></p>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Powered by Machine Learning</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
