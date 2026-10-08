@@ -1,0 +1,3 @@
+## 2023-10-25 - Screen Reader Awareness for Async Updates
+**Learning:** By default, screen readers are unaware when an asynchronous action (like a fetch API call) updates the DOM, leading to a disconnected user experience where visually evident changes are not announced to the visually impaired.
+**Action:** Always add `aria-live="polite"` or `aria-live="assertive"` to DOM sections that will be updated asynchronously. `aria-atomic="true"` ensures the whole section is announced at once. Use `aria-busy` on elements performing the action to communicate progress.
