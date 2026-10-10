@@ -1,0 +1,3 @@
+## 2024-10-10 - Eliminate Sparse Matrix OOM
+**Learning:** Calling `.toarray()` on TfidfVectorizer results converts a memory-efficient sparse matrix into a highly memory-intensive dense matrix. Creating a `pandas.DataFrame` from this dense matrix duplicates the large memory allocation, frequently causing severe Out-Of-Memory (OOM) issues during NLP model training without offering additional utility, as scikit-learn classifiers natively support sparse matrices for both `.fit()` and `.predict()`.
+**Action:** Avoid `.toarray()` or converting to `pandas.DataFrame` when handling sparse matrices (like the output of TfidfVectorizer) inside training and inference loops. Pass sparse matrices directly to scikit-learn models.
