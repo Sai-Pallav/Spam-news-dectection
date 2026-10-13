@@ -1,0 +1,4 @@
+## 2024-10-13 - [NLP DoS Vulnerability in Text Preprocessing]
+**Vulnerability:** Machine learning data pipelines in Jupyter Notebooks were applying computationally expensive operations (e.g. `re.sub` and NLTK lemmatization) directly to unconstrained user input strings (`txt = input(str('Enter the news :'))`).
+**Learning:** This exposes the application to Natural Language Processing Denial of Service (NLP DoS). Malicious users can supply extremely long inputs causing regex engines and lemmatization to consume exponential CPU and memory resources, leading to process exhaustion or crashing.
+**Prevention:** Always enforce strict maximum length limits (e.g., truncating inputs to a safe threshold like 10,000 characters) at the very beginning of the data cleaning function before any processing occurs.
