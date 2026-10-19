@@ -1,0 +1,3 @@
+## 2024-05-18 - NLP Text Preprocessing Stopwords Lookup Optimization
+**Learning:** Found an O(N) performance anti-pattern where NLTK stopwords were loaded as a Python list (`stopwords.words('english')`) and repeatedly used for membership checking (`if not word in stopwords`) inside list comprehensions that clean massive amounts of text. For a dataset with millions of words and ~179 default English stopwords, list membership checking requires iterating through up to 179 items per word.
+**Action:** Always convert standard stopword lists to a `set` (e.g., `set(stopwords.words('english'))`) before checking membership in NLP tasks. Set lookup is an O(1) hash map operation, leading to orders of magnitude faster text preprocessing when scaling to large text datasets.
