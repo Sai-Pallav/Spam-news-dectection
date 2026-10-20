@@ -1,0 +1,4 @@
+## 2024-10-20 - NLP Denial of Service Risk in Data Preprocessing
+**Vulnerability:** The data preprocessing function `clean_row_dataset` executed computationally expensive operations (regex substitution, string splitting, stopword removal via list comprehension, and lemmatization) without input length restrictions. Maliciously crafted extremely long text inputs could cause severe resource exhaustion (CPU and Memory) leading to a Denial of Service.
+**Learning:** Preprocessing functions using operations with greater than linear complexity or large overheads become significant DoS risks when exposed to uncontrolled input lengths. This is a common pattern in NLP pipelines.
+**Prevention:** Always implement max string length limits on user input prior to passing them to regex parsing or other computationally intensive NLP routines. Use sanitization as early in the pipeline as possible.
