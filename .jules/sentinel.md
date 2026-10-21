@@ -1,0 +1,4 @@
+## 2024-10-21 - Enforce Input Length Limits on NLP Processing
+**Vulnerability:** The NLP processing functions (`clean_row_dataset`) using expensive operations like regular expressions (`re.sub`) and NLTK lemmatization did not enforce a maximum length limit on input strings. This exposed the application to potential Denial of Service (DoS) attacks where excessively large strings could exhaust memory or processing resources.
+**Learning:** Natural language processing operations scale poorly with input size. It is critical to validate or restrict inputs to reasonable maximum sizes prior to performing CPU-intensive regex matching or lemmatization.
+**Prevention:** Always enforce strict maximum string length limits directly inside text cleaning and processing functions (e.g., truncating to 50000 characters) before running regex or tokenization operations.
